@@ -1,2 +1,2 @@
-rootProject.name='Vaha Demo App'
+rootProject.name='Popcorn Demo App'
 include ':app'
