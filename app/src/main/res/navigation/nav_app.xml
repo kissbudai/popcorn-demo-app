@@ -8,6 +8,30 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.demo.popcornapp.feature.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_result"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/horizontal_slide_enter"
+            app:exitAnim="@anim/horizontal_slide_exit"
+            app:popEnterAnim="@anim/horizontal_slide_pop_enter"
+            app:popExitAnim="@anim/horizontal_slide_pop_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.demo.popcornapp.feature.result.MovieResultFragment"
+        tools:layout="@layout/fragment_result">
+
+        <argument
+            android:name="movies"
+            app:argType="com.demo.popcornapp.feature.uimodel.MovieUiModel[]" />
+
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

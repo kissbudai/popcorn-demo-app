@@ -9,4 +9,6 @@
     
     <color name="text_primary">@color/black</color>
     <color name="text_secondary">#534E4E</color>
+
+    <color name="divider">#CCC9C9</color>
 </resources>

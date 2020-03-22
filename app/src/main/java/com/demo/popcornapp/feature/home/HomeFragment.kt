@@ -8,9 +8,11 @@ import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.demo.popcornapp.HomeFragmentBinding
 import com.demo.popcornapp.PopCornFragment
 import com.demo.popcornapp.R
+import com.demo.popcornapp.feature.uimodel.toUiModel
 import com.demo.popcornapp.utils.extensions.color
 import com.demo.popcornapp.utils.extensions.exhaustive
 import com.demo.popcornapp.utils.extensions.hideKeyboard
@@ -41,6 +43,9 @@ class HomeFragment : PopCornFragment<HomeFragmentBinding>(R.layout.fragment_home
                 is HomeViewModel.VMEvent.SearchSucceeded -> {
                     requireBinding().root.hideKeyboard()
                     Toast.makeText(requireContext(), "Data received, TODO: navigate to result, WIP", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeToResult(e.movies.map { it.toUiModel() }.toTypedArray(), viewModel.searchQuery.value.orEmpty())
+                    )
                 }
                 is HomeViewModel.VMEvent.SearchFailed ->
                     Snackbar.make(requireBinding().root, e.reasonTextResId, Snackbar.LENGTH_SHORT).show()
@@ -50,7 +55,7 @@ class HomeFragment : PopCornFragment<HomeFragmentBinding>(R.layout.fragment_home
 
         val searchHint = buildSpannedString {
 
-            bold { color(requireContext().color(R.color.black)) {append(getString(R.string.find)) } }
+            bold { color(requireContext().color(R.color.black)) { append(getString(R.string.find)) } }
             append(" ")
             append(getString(R.string.the_movie))
         }
