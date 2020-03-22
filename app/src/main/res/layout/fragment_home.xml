@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data class=".HomeFragmentBinding">
 
@@ -13,16 +14,73 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFF">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_container"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TODO: HOME PAGE"
+            android:layout_marginStart="@dimen/first_keyline"
+            android:layout_marginEnd="@dimen/first_keyline"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textStyle="normal"
+                android:paddingEnd="@dimen/touch_target"
+                android:paddingBottom="@dimen/extra_small_content_padding"
+                android:text="@={viewModel.searchQuery}"
+                android:textSize="34sp"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:background="?selectableItemBackground"
+            android:contentDescription="@string/home_search_button"
+            android:tint="@color/text_secondary"
+            android:onClick="@{(v) -> viewModel.performSearch()}"
+            android:src="@drawable/ic_search_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/search_container"
+            app:layout_constraintEnd_toEndOf="@id/search_container" />
+
+        <ImageView
+            android:layout_width="@dimen/home_logo_width"
+            android:layout_height="@dimen/home_logo_height"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toTopOf="@id/search_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_app_logo" />
+
+
+        <!-- Loading -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="@integer/loading_view_dark_alpha_value"
+            android:background="@color/black"
+            app:isVisible="@{viewModel.isLoading()}">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/accent" />
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
