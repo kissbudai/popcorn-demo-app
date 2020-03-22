@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General -->
+    <dimen name="touch_target">48dp</dimen>
+    <dimen name="first_keyline">16dp</dimen>
+
+    <dimen name="extra_small_content_padding">2dp</dimen>
+    <dimen name="small_content_padding">4dp</dimen>
+    <dimen name="content_padding">8dp</dimen>
+    <dimen name="large_content_padding">16dp</dimen>
+    <dimen name="extra_large_content_padding">24dp</dimen>
+
+    <!-- Home -->
+    <dimen name="home_logo_width">150dp</dimen>
+    <dimen name="home_logo_height">120dp</dimen>
+</resources>
