@@ -1,0 +1,26 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+
+        <item name="textAppearanceBody1">@style/Body1</item>
+        <item name="textAppearanceBody2">@style/Body2</item>
+        <item name="textAppearanceCaption">@style/Caption</item>
+
+        <item name="textAppearanceSubtitle1">@style/Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/Subtitle2</item>
+
+        <item name="textAppearanceHeadline1">@style/Headline1</item>
+        <item name="textAppearanceHeadline2">@style/Headline2</item>
+        <item name="textAppearanceHeadline3">@style/Headline3</item>
+        <item name="textAppearanceHeadline4">@style/Headline4</item>
+        <item name="textAppearanceHeadline5">@style/Headline5</item>
+        <item name="textAppearanceHeadline6">@style/Headline6</item>
+    </style>
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+</resources>
