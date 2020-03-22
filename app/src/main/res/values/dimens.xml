@@ -11,7 +11,13 @@
     <dimen name="large_content_padding">16dp</dimen>
     <dimen name="extra_large_content_padding">24dp</dimen>
 
+    <dimen name="vertical_divider_width">1dp</dimen>
+
     <!-- Home -->
     <dimen name="home_logo_width">150dp</dimen>
     <dimen name="home_logo_height">120dp</dimen>
+
+    <!-- Result list -->
+    <dimen name="result_toolbar_height">160dp</dimen>
+
 </resources>

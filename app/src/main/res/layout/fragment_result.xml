@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".MovieResultFragmentBinding">
+
+        <variable
+            name="viewModel"
+            type="com.demo.popcornapp.feature.result.MovieResultViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/result_toolbar_height"
+            android:background="@android:color/transparent"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="100dp"
+                app:collapsedTitleGravity="center_vertical"
+                app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitleTextAppearance"
+                app:contentScrim="?colorPrimary"
+                app:expandedTitleGravity="bottom"
+                app:expandedTitleTextAppearance="@style/CollapsingToolbarTitleTextAppearance"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="@{viewModel.searchQuery}"
+                app:titleEnabled="true"
+                tools:title="Search query">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="88dp"
+                    android:padding="@dimen/first_keyline"
+                    app:layout_collapseMode="pin"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+                    app:navigationIcon="@drawable/ic_back_24dp"
+                    app:title="@{viewModel.searchQuery}" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="52dp"
+            android:layout_marginEnd="@dimen/first_keyline"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/first_keyline"
+            android:paddingBottom="@dimen/first_keyline"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:listitem="@layout/item_movie" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -40,7 +40,7 @@ class HomeViewModel(private val getMoviesForQuery: GetMoviesForQueryUseCase) : V
             when (val result = getMoviesForQuery(query)) {
                 is Result.Success -> {
                     state.value = ScreenState.NORMAL
-                    _event.value = Event(VMEvent.SearchSucceeded(result.data))
+                    _event.value = Event(if (result.data.isEmpty()) VMEvent.SearchFailed(R.string.could_not_find_results) else VMEvent.SearchSucceeded(result.data))
                 }
                 is Result.Error -> {
                     state.value = ScreenState.ERROR

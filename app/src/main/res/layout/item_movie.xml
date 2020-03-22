@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".MovieItemBinding">
+
+        <variable
+            name="movie"
+            type="com.demo.popcornapp.feature.result.MovieListItem" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/content_description_movie_poster"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="H, 1:0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:moviePoster="@{movie.poster}"
+                tools:background="@color/black" />
+
+            <TextView
+                android:id="@+id/rate_label"
+                style="@style/RatingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/content_padding"
+                android:layout_marginEnd="@dimen/first_keyline"
+                android:drawableStart="@drawable/ic_empty_star_24dp"
+                android:text="@string/movie_rate_this"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/rating_divider"
+                android:layout_width="@dimen/vertical_divider_width"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/content_padding"
+                android:background="@color/divider"
+                app:layout_constraintBottom_toBottomOf="@id/rate_label"
+                app:layout_constraintEnd_toStartOf="@id/rate_label"
+                app:layout_constraintTop_toTopOf="@id/rate_label" />
+
+            <TextView
+                android:id="@+id/current_rating"
+                style="@style/RatingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_padding"
+                android:layout_marginEnd="@dimen/first_keyline"
+                android:drawableStart="@drawable/ic_filled_start_24dp"
+                app:layout_constraintEnd_toEndOf="@id/rating_divider"
+                app:layout_constraintTop_toTopOf="@id/rate_label"
+                tools:text="7.6 / 10 \n 889,100" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/first_keyline"
+                android:layout_marginTop="@dimen/content_padding"
+                android:layout_marginEnd="@dimen/first_keyline"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{movie.title}"
+                android:textAppearance="@style/Headline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/current_rating"
+                tools:text="Titanic" />
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_content_padding"
+                android:fontFamily="@font/lato_medium"
+                android:text="@{movie.year}"
+                android:textAppearance="@style/Headline5"
+                android:textColor="@color/text_secondary"
+                app:layout_constraintEnd_toEndOf="@id/title"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                tools:text="1997" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/first_keyline"
+                android:layout_marginBottom="@dimen/first_keyline"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{movie.tags}"
+                android:textAppearance="?textAppearanceCaption"
+                android:textColor="@color/text_secondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/title"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/year"
+                tools:text="Not Rated | 2h 3min | Biography, Drama, History | 16 December 1958 (USA)" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

@@ -1,15 +1,20 @@
 <resources>
     <string name="app_name">PopCorn Demo App</string>
 
-
     <!-- Home -->
     <string name="home_min_length_for_search_warning">Provide at least 2 character for search</string>
     <string name="find">Find</string>
     <string name="the_movie">the movie</string>
 
+    <!-- Movie item -->
+    <string name="movie_rate_this">Rate \n this</string>
+    <string name="rating_from_ten"> / 10 </string>
+
     <!-- Content description -->
     <string name="home_search_button">Search button</string>
+    <string name="content_description_movie_poster">Movie poster</string>
 
     <!-- Error handling -->
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="could_not_find_results">Unable to find movies. Please change the filter.</string>
 </resources>
