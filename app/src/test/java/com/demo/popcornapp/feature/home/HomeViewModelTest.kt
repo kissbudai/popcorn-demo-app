@@ -139,4 +139,15 @@ class HomeViewModelTest {
 
         Assert.assertEquals(HomeViewModel.VMEvent.SearchSucceeded(movieList), sut.event.value?.peek())
     }
+
+    @Test
+    fun `GIVEN empty response list WHEN search is performed THEN it is considered an error`() = runBlocking {
+        sut.searchQuery.value = "abc"
+
+        whenever(getMoviesForQueryUseCase.invoke(any())).doReturn(Result.Success(emptyList()))
+
+        sut.performSearch()
+
+        Assert.assertEquals(HomeViewModel.VMEvent.SearchFailed(R.string.could_not_find_results), sut.event.value?.peek())
+    }
 }

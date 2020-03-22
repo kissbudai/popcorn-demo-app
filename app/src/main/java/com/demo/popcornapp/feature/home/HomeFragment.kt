@@ -3,7 +3,6 @@ package com.demo.popcornapp.feature.home
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
@@ -42,13 +41,12 @@ class HomeFragment : PopCornFragment<HomeFragmentBinding>(R.layout.fragment_home
                     Snackbar.make(requireBinding().root, R.string.home_min_length_for_search_warning, Snackbar.LENGTH_SHORT).show()
                 is HomeViewModel.VMEvent.SearchSucceeded -> {
                     requireBinding().root.hideKeyboard()
-                    Toast.makeText(requireContext(), "Data received, TODO: navigate to result, WIP", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(
                         HomeFragmentDirections.actionHomeToResult(e.movies.map { it.toUiModel() }.toTypedArray(), viewModel.searchQuery.value.orEmpty())
                     )
                 }
                 is HomeViewModel.VMEvent.SearchFailed ->
-                    Snackbar.make(requireBinding().root, e.reasonTextResId, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(requireBinding().root, e.reasonTextResId, Snackbar.LENGTH_INDEFINITE).show()
                 null -> Unit
             }.exhaustive
         }

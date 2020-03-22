@@ -16,4 +16,5 @@
 
     <!-- Error handling -->
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="could_not_find_results">Unable to find movies. Please change the filter.</string>
 </resources>
