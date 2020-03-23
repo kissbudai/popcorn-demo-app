@@ -3,22 +3,23 @@
 
     <style name="Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
     <style name="Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/lato_regular</item>
+        <item name="fontFamily">@font/lato_light</item>
     </style>
 
     <style name="Caption" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/lato_regular</item>
+        <item name="fontFamily">@font/lato_light</item>
     </style>
-    
+
     <style name="Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/lato_thin</item>
     </style>
-    
+
     <style name="Headline2" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="fontFamily">@font/lato_thin</item>
+        <item name="fontFamily">@font/lato_medium</item>
     </style>
 
     <style name="Headline3" parent="TextAppearance.MaterialComponents.Headline3">
@@ -26,7 +27,7 @@
     </style>
 
     <style name="Headline4" parent="TextAppearance.MaterialComponents.Headline4">
-        <item name="fontFamily">@font/lato_semibold</item>
+        <item name="fontFamily">@font/lato_medium</item>
     </style>
 
     <style name="Headline5" parent="TextAppearance.MaterialComponents.Headline5">

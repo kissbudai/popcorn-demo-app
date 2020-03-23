@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".MovieDetailFragmentBinding">
+
+        <variable
+            name="viewModel"
+            type="com.demo.popcornapp.feature.detail.MovieDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?colorPrimary">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:layout_marginStart="@dimen/first_keyline"
+            android:layout_marginTop="@dimen/first_keyline"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_back"
+            android:src="@drawable/ic_back_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/content_padding"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/first_keyline"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/first_keyline"
+                    android:layout_marginTop="@dimen/first_keyline"
+                    android:text="@{viewModel.movie.title}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?textAppearanceHeadline2"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Titanic" />
+
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_thin"
+                    android:text="@{viewModel.year}"
+                    android:textAppearance="?textAppearanceHeadline3"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    tools:text="1997" />
+
+                <ImageView
+                    android:id="@+id/poster"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/detail_image_height"
+                    android:layout_marginStart="@dimen/first_keyline"
+                    android:layout_marginTop="@dimen/first_keyline"
+                    android:contentDescription="@string/content_description_movie_poster"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/year"
+                    app:moviePoster="@{viewModel.movie.backdropPath}"
+                    tools:background="@color/black" />
+
+                <ImageButton
+                    android:layout_width="@dimen/touch_target"
+                    android:layout_height="@dimen/touch_target"
+                    android:background="?selectableItemBackground"
+                    android:contentDescription="@string/content_description_like"
+                    android:src="@drawable/ic_heart_24dp"
+                    app:layout_constraintBottom_toBottomOf="@id/poster"
+                    app:layout_constraintStart_toStartOf="@id/poster" />
+
+                <View
+                    android:id="@+id/info_section_background"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/first_keyline"
+                    android:layout_marginTop="@dimen/first_keyline"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/description_bottom_barrier"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/poster" />
+
+                <TextView
+                    android:id="@+id/rate_label"
+                    style="@style/RatingLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/first_keyline"
+                    android:layout_marginEnd="@dimen/first_keyline"
+                    android:drawableStart="@drawable/ic_empty_star_24dp"
+                    android:text="@string/movie_rate_this"
+                    app:layout_constraintEnd_toEndOf="@id/info_section_background"
+                    app:layout_constraintTop_toTopOf="@id/info_section_background"
+                    app:layout_goneMarginEnd="@dimen/first_keyline" />
+
+                <View
+                    android:id="@+id/rating_divider"
+                    android:layout_width="@dimen/vertical_divider_width"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="@dimen/content_padding"
+                    android:background="@color/divider"
+                    app:layout_constraintBottom_toBottomOf="@id/rate_label"
+                    app:layout_constraintEnd_toStartOf="@id/rate_label"
+                    app:layout_constraintTop_toTopOf="@id/rate_label" />
+
+                <TextView
+                    android:id="@+id/current_rating"
+                    style="@style/RatingLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/content_padding"
+                    android:layout_marginEnd="@dimen/content_padding"
+                    android:drawableStart="@drawable/ic_filled_start_24dp"
+                    android:gravity="end"
+                    app:layout_constraintEnd_toEndOf="@id/rating_divider"
+                    app:layout_constraintTop_toTopOf="@id/rate_label"
+                    tools:text="7.6 / 10 \n 889,100" />
+
+                <TextView
+                    android:id="@+id/tags"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/first_keyline"
+                    android:layout_marginTop="@dimen/content_padding"
+                    android:text="@{viewModel.tags}"
+                    android:textAppearance="?textAppearanceCaption"
+                    app:layout_constraintEnd_toEndOf="@id/rate_label"
+                    app:layout_constraintStart_toStartOf="@id/info_section_background"
+                    app:layout_constraintTop_toBottomOf="@id/current_rating"
+                    tools:text="Not Rated | 2h 3min | Biography, Drama, History | 16 December 1958 (USA)" />
+
+                <View
+                    android:id="@+id/tags_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/horizontal_divider_height"
+                    android:layout_marginStart="@dimen/first_keyline"
+                    android:layout_marginTop="@dimen/content_padding"
+                    android:background="@color/text_secondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tags" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/first_keyline"
+                    android:layout_marginTop="@dimen/content_padding"
+                    android:layout_marginEnd="@dimen/first_keyline"
+                    android:text="@{viewModel.movie.description}"
+                    android:textAppearance="?textAppearanceBody1"
+                    app:layout_constraintEnd_toEndOf="@id/info_section_background"
+                    app:layout_constraintStart_toStartOf="@id/info_section_background"
+                    app:layout_constraintTop_toBottomOf="@id/tags_divider"
+                    tools:text="@tools:sample/lorem" />
+
+                <View
+                    android:id="@+id/description_bottom_barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/first_keyline"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

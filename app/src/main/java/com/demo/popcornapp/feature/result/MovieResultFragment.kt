@@ -27,7 +27,11 @@ class MovieResultFragment : PopCornFragment<MovieResultFragmentBinding>(R.layout
         }
 
         val movieAdapter = MovieAdapter()
-        movieAdapter.setItemClickListener { position -> }
+        movieAdapter.setItemClickListener { position ->
+            val movie = viewModel.getMovie(position) ?: return@setItemClickListener
+
+            findNavController().navigate(MovieResultFragmentDirections.actionResultToDetail(movie))
+        }
 
         viewModel.movieList.observe(viewLifecycleOwner, movieAdapter::submitList)
 
