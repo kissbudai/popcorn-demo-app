@@ -3,6 +3,7 @@ package com.demo.popcornapp.di
 import com.demo.popcornapp.BuildConfig
 import com.demo.popcornapp.data.remote.MovieRemoteSource
 import com.demo.popcornapp.data.service.MovieService
+import com.demo.popcornapp.data.usecase.GetGenreListUseCase
 import com.demo.popcornapp.data.usecase.GetMoviesForQueryUseCase
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -48,4 +49,5 @@ private val remoteModule = module {
 
 private val useCaseModule = module {
     factory { GetMoviesForQueryUseCase(get()) }
+    factory { GetGenreListUseCase() }
 }

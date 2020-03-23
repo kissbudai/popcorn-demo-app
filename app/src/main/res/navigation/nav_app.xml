@@ -32,6 +32,25 @@
         <argument
             android:name="query"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_result_to_detail"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/horizontal_slide_enter"
+            app:exitAnim="@anim/horizontal_slide_exit"
+            app:popEnterAnim="@anim/horizontal_slide_pop_enter"
+            app:popExitAnim="@anim/horizontal_slide_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.demo.popcornapp.feature.detail.MovieDetailFragment"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="movie"
+            app:argType="com.demo.popcornapp.feature.uimodel.MovieUiModel" />
+
     </fragment>
 
 </navigation>

@@ -8,7 +8,7 @@ import com.demo.popcornapp.R
 @BindingAdapter("moviePoster")
 fun ImageView.setMoviePoster(poster: String) {
     Glide.with(this)
-        .load("https://image.tmdb.org/t/p/w92/$poster")
+        .load("https://image.tmdb.org/t/p/w500/$poster")
         .placeholder(R.drawable.ic_app_logo)
         .into(this)
 }

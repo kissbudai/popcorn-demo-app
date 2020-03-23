@@ -7,8 +7,9 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     
-    <color name="text_primary">@color/black</color>
+    <color name="text_primary">#131313</color>
     <color name="text_secondary">#534E4E</color>
+    <color name="text_light">#9B9B9B</color>
 
     <color name="divider">#CCC9C9</color>
 </resources>
