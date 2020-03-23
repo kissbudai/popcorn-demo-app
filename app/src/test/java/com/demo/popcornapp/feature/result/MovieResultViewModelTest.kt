@@ -1,5 +1,6 @@
 package com.demo.popcornapp.feature.result
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.demo.popcornapp.feature.uimodel.MovieUiModel
 import com.demo.popcornapp.shared.MovieTagBuilder
 import com.demo.popcornapp.utils.DateHandler
@@ -9,9 +10,13 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class MovieResultViewModelTest {
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val movieTagBuilder: MovieTagBuilder = mock()
     private val dateHandler = DateHandler()
@@ -20,13 +25,12 @@ class MovieResultViewModelTest {
 
     @Before
     fun setup() {
+        whenever(movieTagBuilder.invoke(any())).doReturn("tags")
         sut = MovieResultViewModel("testSearch", MOVIES, movieTagBuilder, dateHandler)
     }
 
     @Test
     fun `GIVEN the view model with non-empty movie list WHEN initialized THEN the movie list is mapped to list model`() {
-
-        whenever(movieTagBuilder.invoke(any())).doReturn("tags")
 
         val expected = listOf(
             MovieListItem(
