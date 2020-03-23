@@ -17,6 +17,7 @@
     <!-- Home -->
     <dimen name="home_logo_width">150dp</dimen>
     <dimen name="home_logo_height">120dp</dimen>
+    <dimen name="home_suggestion_dropdown_height">200dp</dimen>
 
     <!-- Result list -->
     <dimen name="result_toolbar_height">160dp</dimen>

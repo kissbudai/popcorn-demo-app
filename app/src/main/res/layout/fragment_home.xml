@@ -29,19 +29,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/search_input"
+                style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:textStyle="normal"
+                android:completionThreshold="0"
+                android:dropDownHeight="@dimen/home_suggestion_dropdown_height"
                 android:paddingEnd="@dimen/touch_target"
                 android:paddingBottom="@dimen/extra_small_content_padding"
                 android:text="@={viewModel.searchQuery}"
-                android:textSize="34sp"
-                tools:ignore="RtlSymmetry" />
+                android:textSize="34sp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +83,7 @@
                 android:indeterminateTint="@color/accent" />
 
         </FrameLayout>
-
+        
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
