@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
@@ -47,6 +48,10 @@ class HomeFragment : PopCornFragment<HomeFragmentBinding>(R.layout.fragment_home
                 if (hasFocus) {
                     requireBinding().searchInput.showDropDown()
                 }
+            }
+
+            searchInput.onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
+                this@HomeFragment.viewModel.performSearch()
             }
         }
 
