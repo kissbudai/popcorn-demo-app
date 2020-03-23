@@ -19,35 +19,27 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/result_toolbar_height"
+            android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            app:liftOnScroll="true">
+            app:elevation="0dp">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:minHeight="100dp"
-                app:collapsedTitleGravity="center_vertical"
-                app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitleTextAppearance"
-                app:contentScrim="?colorPrimary"
-                app:expandedTitleGravity="bottom"
-                app:expandedTitleTextAppearance="@style/CollapsingToolbarTitleTextAppearance"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.searchQuery}"
-                app:titleEnabled="true"
-                tools:title="Search query">
+                android:layout_height="88dp"
+                android:padding="@dimen/first_keyline"
+                app:navigationIcon="@drawable/ic_back_24dp" />
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="88dp"
-                    android:padding="@dimen/first_keyline"
-                    app:layout_collapseMode="pin"
-                    app:layout_scrollFlags="scroll|enterAlways|snap"
-                    app:navigationIcon="@drawable/ic_back_24dp"
-                    app:title="@{viewModel.searchQuery}" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="56dp"
+                android:paddingTop="@dimen/content_padding"
+                android:paddingBottom="@dimen/content_padding"
+                android:text="@{viewModel.searchQuery}"
+                android:textAppearance="@style/ToolbarTitleTextAppearance"
+                tools:text="search query" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
